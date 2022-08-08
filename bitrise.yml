@@ -26,10 +26,11 @@ workflows:
                 \n  brew link --force ruby@2.7\necho 'export PATH=\"/usr/local/opt/ruby@2.7/bin:$PATH\"'
                 >> /Users/vagrant/.bash_profile"
           title: Script for ruby version
-      - run reassure:
+      - yarn:
           inputs:
-            - workdir: '$WORKDIR'
-            - command: ./reassure-tests.sh
+            - args: ci
+            - command: danger
+            is_always_run: true
       # - danger@2:
       #     inputs:
       #     - github_api_token: "$github_api_token"
