@@ -15,6 +15,13 @@ const Counter: FC<IProps> = ({count}) => {
     setPrevCount(count);
     setTrend(count > prevCount ? 'increasing' : 'decreasing');
   }
+  // React.useEffect(() => {
+  //   if (prevCount !== count) {
+  //     setPrevCount(count);
+  //     setTrend(count > prevCount ? 'increasing' : 'decreasing');
+  //   }
+  // }, [prevCount, count]);
+
   return (
     <>
       <View>

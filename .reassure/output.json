@@ -1,0 +1,155 @@
+{
+  "errors": [],
+  "warnings": [],
+  "significant": [],
+  "meaningless": [
+    {
+      "name": "App",
+      "baseline": {
+        "name": "App",
+        "runs": 10,
+        "meanDuration": 41.7,
+        "stdevDuration": 2.869378562220979,
+        "durations": [
+          46,
+          45,
+          45,
+          42,
+          41,
+          41,
+          41,
+          40,
+          39,
+          37
+        ],
+        "meanCount": 13,
+        "stdevCount": 0,
+        "counts": [
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      "current": {
+        "name": "App",
+        "runs": 10,
+        "meanDuration": 42.3,
+        "stdevDuration": 3.0203016773531446,
+        "durations": [
+          48,
+          44,
+          44,
+          44,
+          43,
+          43,
+          40,
+          40,
+          39,
+          38
+        ],
+        "meanCount": 25,
+        "stdevCount": 0,
+        "counts": [
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      "durationDiff": 0.5999999999999943,
+      "relativeDurationDiff": 0.014388489208632955,
+      "isDurationDiffSignificant": false,
+      "countDiff": 12,
+      "relativeCountDiff": 0.9230769230769231
+    }
+  ],
+  "countChanged": [
+    {
+      "name": "App",
+      "baseline": {
+        "name": "App",
+        "runs": 10,
+        "meanDuration": 41.7,
+        "stdevDuration": 2.869378562220979,
+        "durations": [
+          46,
+          45,
+          45,
+          42,
+          41,
+          41,
+          41,
+          40,
+          39,
+          37
+        ],
+        "meanCount": 13,
+        "stdevCount": 0,
+        "counts": [
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13
+        ]
+      },
+      "current": {
+        "name": "App",
+        "runs": 10,
+        "meanDuration": 42.3,
+        "stdevDuration": 3.0203016773531446,
+        "durations": [
+          48,
+          44,
+          44,
+          44,
+          43,
+          43,
+          40,
+          40,
+          39,
+          38
+        ],
+        "meanCount": 25,
+        "stdevCount": 0,
+        "counts": [
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25,
+          25
+        ]
+      },
+      "durationDiff": 0.5999999999999943,
+      "relativeDurationDiff": 0.014388489208632955,
+      "isDurationDiffSignificant": false,
+      "countDiff": 12,
+      "relativeCountDiff": 0.9230769230769231
+    }
+  ],
+  "added": [],
+  "removed": []
+}

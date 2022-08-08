@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
-import {View, Button, StyleSheet} from 'react-native';
-import Counter from './src/components/Counter';
+import {View, Button, StyleSheet, SafeAreaView} from 'react-native';
+import Counter from './src/components/counter/Counter';
+import FlatListComponent from './src/components/flatListComponent/FlatListComponent';
 
 const App = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.buttonsContainer}>
         <Button title="decrement" onPress={() => setCount(prev => prev - 1)} />
         <Button title="increment" onPress={() => setCount(prev => prev + 1)} />
       </View>
       <Counter count={count} />
-    </View>
+      <FlatListComponent />
+    </SafeAreaView>
   );
 };
 
