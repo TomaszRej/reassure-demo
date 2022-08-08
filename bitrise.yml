@@ -1,0 +1,121 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+workflows:
+  danger:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@6: {}
+      - yarn@0:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: install
+          title: Run yarn install
+      - script@1:
+          inputs:
+            - content:
+                "\n\n\n  # uninstall the previously installed ruby version \n  brew
+                uninstall ruby \n  # install the minor version you want - in this example
+                we're installing 2.7\n  brew install ruby@2.7\n  # \"activate\" this version
+                \n  brew link --force ruby@2.7\necho 'export PATH=\"/usr/local/opt/ruby@2.7/bin:$PATH\"'
+                >> /Users/vagrant/.bash_profile"
+          title: Script for ruby version
+      - run reassure:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: ./reassure-tests.sh
+      # - danger@2:
+      #     inputs:
+      #     - github_api_token: "$github_api_token"
+      - deploy-to-bitrise-io@2: {}
+  deploy:
+    description: |
+      Tests, builds and deploys the app using *Deploy to bitrise.io* Step.
+
+      Next steps:
+      - Set up an [Apple service with API key](https://devcenter.bitrise.io/en/accounts/connecting-to-services/connecting-to-an-apple-service-with-api-key.html).
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@6: {}
+      - yarn@0:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: install
+      - yarn@0:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: test
+      - install-missing-android-tools@3:
+          inputs:
+            - gradlew_path: '$PROJECT_LOCATION/gradlew'
+      - android-build@1:
+          inputs:
+            - project_location: '$PROJECT_LOCATION'
+            - module: '$MODULE'
+            - variant: '$VARIANT'
+      - cocoapods-install@2: {}
+      - xcode-archive@4:
+          inputs:
+            - project_path: '$BITRISE_PROJECT_PATH'
+            - scheme: '$BITRISE_SCHEME'
+            - distribution_method: '$BITRISE_DISTRIBUTION_METHOD'
+            - configuration: Release
+            - automatic_code_signing: api-key
+      - deploy-to-bitrise-io@2: {}
+  primary:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with React Native apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-react-native-apps.html).
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@6: {}
+      - yarn@0:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: install
+      - yarn@0:
+          inputs:
+            - workdir: '$WORKDIR'
+            - command: test
+      - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.4.x
+app:
+  envs:
+    - opts:
+        is_expand: false
+      WORKDIR: '.'
+    - opts:
+        is_expand: false
+      PROJECT_LOCATION: android
+    - opts:
+        is_expand: false
+      MODULE: app
+    - opts:
+        is_expand: false
+      VARIANT: Debug
+    - opts:
+        is_expand: false
+      BITRISE_PROJECT_PATH: ios/ReassureDemo.xcworkspace
+    - opts:
+        is_expand: false
+      BITRISE_SCHEME: ReassureDemo
+    - opts:
+        is_expand: false
+      BITRISE_DISTRIBUTION_METHOD: development
+trigger_map:
+  - push_branch: main
+    workflow: danger
+  - pull_request_source_branch: '*'
+    pull_request_target_branch: main
+    workflow: danger
