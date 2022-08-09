@@ -112,8 +112,8 @@ app:
         is_expand: false
       BITRISE_DISTRIBUTION_METHOD: development
 trigger_map:
-  - push_branch: main
-    workflow: danger
+  # - push_branch: main
+  #   workflow: danger
   - pull_request_source_branch: '*'
     pull_request_target_branch: main
     workflow: danger
