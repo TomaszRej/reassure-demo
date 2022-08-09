@@ -30,11 +30,8 @@ workflows:
           inputs:
             - args: ci
             - command: danger
-            - github_api_token: $github_api_token
           title: Run danger
       - deploy-to-bitrise-io@2: {}
-    envs:
-      - github_api_token: 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
   deploy:
     description: |
       Tests, builds and deploys the app using *Deploy to bitrise.io* Step.
