@@ -26,15 +26,16 @@ workflows:
                 \n  brew link --force ruby@2.7\necho 'export PATH=\"/usr/local/opt/ruby@2.7/bin:$PATH\"'
                 >> /Users/vagrant/.bash_profile"
           title: Script for ruby version
-      - yarn:
+      - yarn@0:
           inputs:
             - args: ci
             - command: danger
-            is_always_run: true
-             - github_api_token: "$github_api_token"
+            # is_always_run: true
+            #
+            # github_api_token: "$github_api_token"
       # - danger@2:
       #     inputs:
-      #    
+      #
       - deploy-to-bitrise-io@2: {}
   deploy:
     description: |
