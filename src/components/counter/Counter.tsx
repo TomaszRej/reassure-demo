@@ -11,12 +11,10 @@ const Counter: FC<IProps> = ({count}) => {
   const [prevCount, setPrevCount] = useState(count);
   const [trend, setTrend] = useState<Trend>(null);
 
-  React.useEffect(() => {
-    if (prevCount !== count) {
-      setPrevCount(count);
-      setTrend(count > prevCount ? 'increasing' : 'decreasing');
-    }
-  }, [prevCount, count]);
+  if (prevCount !== count) {
+    setPrevCount(count);
+    setTrend(count > prevCount ? 'increasing' : 'decreasing');
+  }
 
   return (
     <>

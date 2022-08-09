@@ -5,22 +5,26 @@ import App from './App';
 
 test('App', async () => {
   const scenario = async () => {
-    fireEvent.press(screen.getByText('increment'));
-    fireEvent.press(screen.getByText('increment'));
-    fireEvent.press(screen.getByText('increment'));
-    fireEvent.press(screen.getByText('increment'));
-    fireEvent.press(screen.getByText('increment'));
-    fireEvent.press(screen.getByText('increment'));
+    const incrementButton = screen.getByText('increment');
+
+    fireEvent.press(incrementButton);
+    fireEvent.press(incrementButton);
+    fireEvent.press(incrementButton);
+    fireEvent.press(incrementButton);
+    fireEvent.press(incrementButton);
+    fireEvent.press(incrementButton);
 
     expect(screen.getByText('Count: 6')).toBeTruthy();
     expect(screen.getByText('The count is increasing')).toBeTruthy();
 
-    fireEvent.press(screen.getByText('decrement'));
-    fireEvent.press(screen.getByText('decrement'));
-    fireEvent.press(screen.getByText('decrement'));
-    fireEvent.press(screen.getByText('decrement'));
-    fireEvent.press(screen.getByText('decrement'));
-    fireEvent.press(screen.getByText('decrement'));
+    const decrementButton = screen.getByText('decrement');
+
+    fireEvent.press(decrementButton);
+    fireEvent.press(decrementButton);
+    fireEvent.press(decrementButton);
+    fireEvent.press(decrementButton);
+    fireEvent.press(decrementButton);
+    fireEvent.press(decrementButton);
 
     expect(screen.getByText('Count: 0')).toBeTruthy();
     expect(screen.getByText('The count is decreasing')).toBeTruthy();
