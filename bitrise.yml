@@ -30,12 +30,7 @@ workflows:
           inputs:
             - args: ci
             - command: danger
-            # is_always_run: true
-            #
-            # github_api_token: "$github_api_token"
-      # - danger@2:
-      #     inputs:
-      #
+          title: Run danger
       - deploy-to-bitrise-io@2: {}
   deploy:
     description: |

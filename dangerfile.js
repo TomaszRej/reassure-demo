@@ -1,4 +1,6 @@
-import {message, danger} from 'danger';
+import path from 'path';
+import reassureDangerPlugin from 'reassure/plugins';
 
-const modifiedMD = danger.git.modified_files.join('- ');
-message('Changed Files in this PR: \n - ' + modifiedMD);
+reassureDangerPlugin({
+  inputFilePath: path.join(__dirname, '.reassure/output.md'),
+});
