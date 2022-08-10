@@ -28,7 +28,7 @@ workflows:
           title: Script for ruby version
       - script@1:
           inputs:
-            - content: './reassure-tests.sh'
+            - content: 'sh reassure-tests.sh'
           title: Script for reassure-tests.sh
       - yarn@0:
           inputs:
