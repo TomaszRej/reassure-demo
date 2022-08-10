@@ -30,7 +30,10 @@ const FlatListComponent = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList data={DATA} renderItem={renderItem} />
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => <Item title={item.title} />}
+      />
     </SafeAreaView>
   );
 };
