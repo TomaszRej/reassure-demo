@@ -1,1 +1,1 @@
-{"name":"App","runs":10,"meanDuration":41.7,"stdevDuration":2.869378562220979,"durations":[46,45,45,42,41,41,41,40,39,37],"meanCount":13,"stdevCount":0,"counts":[13,13,13,13,13,13,13,13,13,13]}
+{"name":"App","runs":10,"meanDuration":55.2,"stdevDuration":3.3928028399998595,"durations":[60,59,59,57,55,54,54,52,51,51],"meanCount":25,"stdevCount":0,"counts":[25,25,25,25,25,25,25,25,25,25]}

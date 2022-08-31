@@ -23,14 +23,17 @@ const Item = ({title}: {title: string}) => (
 );
 
 const FlatListComponent = () => {
-  const renderItem = useCallback(
-    ({item}: {item: DataType}) => <Item title={item.title} />,
-    [],
-  );
+  // const renderItem = useCallback(
+  //   ({item}: {item: DataType}) => <Item title={item.title} />,
+  //   [],
+  // );
 
   return (
     <SafeAreaView style={styles.container}>
-      <FlatList data={DATA} renderItem={renderItem} />
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => <Item title={item.title} />}
+      />
     </SafeAreaView>
   );
 };
